@@ -7,7 +7,7 @@
 #define HAL_H_
 
 #include <cstdint>
-#include "HAL.h"
+#include "GPIO.h"
 
 using namespace std;
 namespace core {
@@ -20,9 +20,6 @@ enum LIGHTID {
 	RED_LIGHT, GREEN_LIGHT, YELLOW_LIGHT
 };
 
-enum LEVEL {
-	OFF, ON
-};
 
 enum DIRECTION {
 	LEFT, RIGHT
@@ -60,7 +57,7 @@ public:
 	 * 		level = LEVEL::OFF --> turn OFF
 	 * 		level = LEVEL::ON --> turn ON
 	 */
-	virtual void ledOnOFF(LEDID led, LEVEL level) = 0;
+	virtual void ledOnOFF(LEDID led, PINLEVEL level) = 0;
 	/**
 	 *
 	 * @param light the Light to be turned ON/OFF
@@ -68,7 +65,7 @@ public:
 	 * 		level = LEVEL::OFF --> turn OFF
 	 * 		level = LEVEL::ON --> turn ON
 	 */
-	virtual void lightOnOFF(LIGHTID light, LEVEL level) = 0;
+	virtual void lightOnOFF(LIGHTID light, PINLEVEL level) = 0;
 
 	/**
 	 * readHeight : read the height of an item
@@ -82,7 +79,7 @@ public:
 	 * 		  level = LEVEL::OFF --> close the Switch
 	 * 		  level = LEVEL::ON	 --> open the Switch
 	 */
-	virtual void switchOnOFF(LEVEL level) = 0;
+	virtual void switchOnOFF(PINLEVEL level) = 0;
 
 	/**
 	 * Turn the motor the direction incated by dir.
@@ -98,7 +95,7 @@ public:
 	 * 		  level = LEVEL::OFF --> Motor OFF
 	 * 		  level = LEVEL::ON  --> Motor ON
 	 */
-	virtual void motorOnOFF(LEVEL level) = 0;
+	virtual void motorOnOFF(PINLEVEL level) = 0;
 
 	/**
 	 *
